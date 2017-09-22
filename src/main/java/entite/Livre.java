@@ -1,7 +1,5 @@
 package entite;
 
-import java.time.LocalDate;
-
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -18,7 +16,7 @@ public class Livre {
 	@Column(name = "titre")
 	private String titre;
 	@Column(name = "date_publication")
-	private LocalDate dateDePublication;
+	private String dateDePublication;
 	@Column(name = "description")
 	private String description;
 	@Column(name = "categorie")
@@ -28,9 +26,9 @@ public class Livre {
 	@OneToOne
 	@JoinColumn(name="id_Aut")
 	private Auteur auteur;
-	@Column(name = "nombre_explemplaires")
+	@Column(name = "nombre_exemplaires")
 	private int nombreEx;
-	@Column(name = "nombre_explemplaires_disponibles")
+	@Column(name = "nombre_exemplaires_disponibles")
 	private int nombreExDispo;
 	
 	
@@ -48,7 +46,7 @@ public class Livre {
 	 * @param nombreEx
 	 * @param nombreExDispo
 	 */
-	public Livre(String titre, LocalDate dateDePublication, String description, String categorie, Auteur auteur,
+	public Livre(String titre, String dateDePublication, String description, String categorie, Auteur auteur,
 			int nombreEx, int nombreExDispo) {
 		this.titre = titre;
 		this.dateDePublication = dateDePublication;
@@ -77,7 +75,7 @@ public class Livre {
 	/**
 	 * @return the dateDePublication
 	 */
-	public LocalDate getDateDePublication() {
+	public String getDateDePublication() {
 		return dateDePublication;
 	}
 
@@ -85,7 +83,7 @@ public class Livre {
 	 * @param dateDePublication
 	 *            the dateDePublication to set
 	 */
-	public void setDateDePublication(LocalDate dateDePublication) {
+	public void setDateDePublication(String dateDePublication) {
 		this.dateDePublication = dateDePublication;
 	}
 

@@ -20,23 +20,26 @@ import entite.Auteur;
 import services.AuteurService;
 
 /**
- * Servlet implementation class RouterBibliotheque
+ * Cette servlet permet d'afficher la liste des auteurs
+ * 
+ * La sélection d'un auteur par son ID, l'ajout d'un nouvel auteur, sa modification etsa suppression se trouve dans une seconde servlet nommée
+ * "AuteurServlet" et accessible à l'URL "/Auteur.
  */
-@WebServlet(urlPatterns = { "/Auteur" })
+@WebServlet(urlPatterns = { "/Auteurs" })
 public class AuteurServletListe extends HttpServlet {
 	public static EntityManager em = ConnectionEm.getInstance();
 	private static final long serialVersionUID = 1L;
-	AuteurService service=null;
+	AuteurService service = null;
+
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
 	public AuteurServletListe() {
-		
+
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
-	 *      response)
+	 * Methode GET pour lister l'ensemble des auteurs.
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
@@ -56,13 +59,7 @@ public class AuteurServletListe extends HttpServlet {
 		response.setContentType("application/json");
 		response.getWriter().print(objetJSon.toString());
 		System.out.println(objetJSon.toString());
-
-		// em.close();
-
 	}
 
-	protected void doPost(HttpServletRequest request, HttpServletResponse response)
-			throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	}
+	
 }

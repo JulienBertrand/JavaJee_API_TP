@@ -14,7 +14,6 @@ public class AuteurServiceJPA implements AuteurService{
 		em.getTransaction().begin();
 		em.persist(auteur);
 		em.getTransaction().commit();
-
 	}
 
 	public void update(Auteur auteur) {
@@ -24,20 +23,21 @@ public class AuteurServiceJPA implements AuteurService{
 			auteurUpdate.setNom(auteur.getNom());
 			auteurUpdate.setPrenom(auteur.getPrenom());
 			auteurUpdate.setLangue(auteur.getLangue());
+			em.getTransaction().begin();
 			em.persist(auteurUpdate);
 		}
 		else {
 			save(auteur);
+			em.persist(auteur);
 		}
+		em.getTransaction().commit();
 	}
 
 	public void delete(Auteur auteur) {
 		EntityManager em = ConnectionEm.getInstance();
-		//Auteur auteurDelete = em.find(Auteur.class, auteur.getId_Auteur());
 		em.getTransaction().begin();
 		em.remove(auteur);
 		em.getTransaction().commit();
-
 	}
 
 	public List<Auteur> findAll() {
